@@ -10,28 +10,21 @@ function App() {
   useEffect(() => {
     fetch(`${API_URL}/albums`)
       .then((response) => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
+        if (!response.ok) throw new Error('Network response not ok');
         return response.json();
       })
       .then((data) => {
         setAlbums(data);
         setLoading(false);
       })
-      .catch((error) => {
-        setError(error.message);
+      .catch((err) => {
+        setError(err.message);
         setLoading(false);
       });
   }, []);
 
-  if (loading) {
-    return <div style={{ padding: 20 }}>Loading albums...</div>;
-  }
-
-  if (error) {
-    return <div style={{ padding: 20, color: 'red' }}>Error: {error}</div>;
-  }
+  if (loading) return <div style={{ padding: 20 }}>Loading albums...</div>;
+  if (error) return <div style={{ padding: 20, color: 'red' }}>Error: {error}</div>;
 
   return (
     <div style={{ padding: 20 }}>
