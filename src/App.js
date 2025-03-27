@@ -8,7 +8,8 @@ export default function MusicRankingApp() {
   const [songs, setSongs] = useState([{ name: '', rating: '', note: '' }]);
   const [editingAlbum, setEditingAlbum] = useState(null);
 
-  const API_URL = 'http://127.0.0.1:5000';
+  const API_URL = 'const API_URL = 'https://albumbackend-vr81.onrender.com';
+';
 
   useEffect(() => {
     fetchAlbums();
