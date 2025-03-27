@@ -43,7 +43,7 @@ export default function MusicRankingApp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = editingAlbum ? \`\${API_URL}/update_album/\${editingAlbum}\` : \`\${API_URL}/add_album\`;
+      const url = editingAlbum ? \\`\\${API_URL}/update_album/\\${editingAlbum}\\` : \\`\\${API_URL}/add_album\\`;
       const method = editingAlbum ? "PUT" : "POST";
 
       const albumResponse = await fetch(url, {
@@ -55,7 +55,7 @@ export default function MusicRankingApp() {
 
       if (!albumData.album_id) throw new Error("Album ID missing from response");
 
-      await fetch(\`\${API_URL}/add_songs\`, {
+      await fetch(\\`\\${API_URL}/add_songs\\`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ album_id: albumData.album_id, songs }),
